@@ -30,7 +30,7 @@
         physics: { // the arcade physics system provided by Phaser
           default: 'arcade',
           arcade: {
-              gravity: { y: 300 },
+              gravity: { y: 400 },
               debug: false
           }
         },
@@ -92,7 +92,7 @@
       platforms.create(1300, 150, 'ground').setScale(0.5).refreshBody(); 
 
       // creating the sprite (player)
-      player = this.physics.add.sprite(250, 450, 'dude'); // loaded as sprite because it has animation frames
+      player = this.physics.add.sprite(1500, 450, 'dude'); // loaded as sprite because it has animation frames
       player2 = this.physics.add.sprite(50, 450, 'dude'); // loaded as sprite because it has animation frames
       player3 = this.physics.add.sprite(100, 450, 'dude'); // loaded as sprite because it has animation frames
       player4 = this.physics.add.sprite(150, 450, 'dude'); // loaded as sprite because it has animation frames
@@ -112,7 +112,7 @@
 
       // setting world bounds for each player
       for (let i = 0; i < playerList.length; i++) {
-        playerList[i].setBounce(0.2);
+        // playerList[i].setBounce(0.2);
         playerList[i].setCollideWorldBounds(true);
 
         // platform collision for each player
@@ -240,7 +240,7 @@
         
         // this has to be last otherwise phaser messes up
         if (playerController.buttons['a'] && player.body.touching.down) {
-          player.setVelocityY(-350);
+          player.setVelocityY(-400);
           console.log("jump equals true");
         }
     }
