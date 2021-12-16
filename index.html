@@ -152,13 +152,13 @@
           repeat: -1
       });
 
-      this.initialTime = 70;
+      this.initialTime = 120;
 
       text = this.add.text(32, 32, 'Countdown: ' + formatTime(this.initialTime), { fontSize: '32px', fill: '#000' });
 
       // Each 1000 ms call onEvent
       timedEvent = this.time.addEvent({ delay: 1000, callback: onEvent, callbackScope: this, loop: true });
-      timedEvent = this.time.addEvent({ delay: 70000, callback: goodGuysWin, callbackScope: this, loop: true });
+      timedEvent = this.time.addEvent({ delay: 120000, callback: goodGuysWin, callbackScope: this, loop: true });
     }
 
     // where the controls live
@@ -234,7 +234,7 @@
           }
         
         // this has to be last otherwise phaser messes up
-        if (playerController.buttons['up'] && player.body.touching.down) {
+        if (playerController.buttons['a'] && player.body.touching.down) {
           player.setVelocityY(-350);
           console.log("jump equals true");
         }
