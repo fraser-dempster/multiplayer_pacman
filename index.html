@@ -53,7 +53,6 @@
     {
       this.load.image('sky', 'assets/sky.png');
       this.load.image('ground', 'assets/platform.png');
-      this.load.image('star', 'assets/star.png');
       this.load.image('bomb', 'assets/bomb.png');
       this.load.spritesheet('dude', 
         'assets/dude.png',
@@ -83,21 +82,9 @@
       platforms.create(1200, 568, 'ground').setScale(2).refreshBody(); 
       // Need refresh so the physics systems knows it's been doubled
 
-      // platforms.create(600, 400, 'ground');
-      // platforms.create(50, 250, 'ground');
+      platforms.create(600, 400, 'ground');
+      platforms.create(50, 250, 'ground');
       platforms.create(750, 220, 'ground');
-
-      // creating stars
-      stars = this.physics.add.group({ // dynamic group so stars bounce
-        key: 'star',
-        repeat: 0,
-        setXY: { x: 700, y: 0, stepX: 70 }
-      });
-
-      stars.children.iterate(function (child) {
-        child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
-        child.setScale(2);
-      });
 
       // creating the sprite (player)
       player = this.physics.add.sprite(250, 450, 'dude'); // loaded as sprite because it has animation frames
@@ -111,6 +98,12 @@
       playerList.push(player3);
       playerList.push(player4);
       playerList.push(player5);
+
+      player.setTint(0xFF0000);
+      player2.setTint(0x746ab0);
+      player3.setTint(0x288ba8);
+      player4.setTint(0xffce30);
+      player5.setTint(0xE389B9);
 
       // setting world bounds for each player
       for (let i = 0; i < playerList.length; i++) {
@@ -135,9 +128,8 @@
           }
         }
       }
-      this.physics.add.collider(stars, platforms);
 
-      player.setTint(0xFF0000);
+
 
       // animations
       this.anims.create({
