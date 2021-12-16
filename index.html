@@ -94,7 +94,7 @@
       platforms.create(800, 350, 'ground').setScale(0.5).refreshBody(); 
 
       // creating the sprite (player)
-      player = this.physics.add.sprite(1500, 450, 'dude'); // loaded as sprite because it has animation frames
+      player = this.physics.add.sprite(250, 450, 'dude'); // loaded as sprite because it has animation frames
       player2 = this.physics.add.sprite(50, 450, 'dude'); // loaded as sprite because it has animation frames
       player3 = this.physics.add.sprite(100, 450, 'dude'); // loaded as sprite because it has animation frames
       player4 = this.physics.add.sprite(150, 450, 'dude'); // loaded as sprite because it has animation frames
@@ -127,13 +127,28 @@
             alert("The Bad Guy Won :(");
           }
         }, null, this);
+        if (i != 0) {
+          this.physics.add.collider(playerList[1], playerList[i]);
+          this.physics.add.collider(playerList[2], playerList[i]);
+          this.physics.add.collider(playerList[3], playerList[i]);
+          this.physics.add.collider(playerList[4], playerList[i]);
+        }
 
         // player to player collision
-        for (let j = 0; j < playerList.length; j++) {
-          if (playerList[i] != playerList[j] && (i || j) == 0) {
-            this.physics.add.collider(playerList[i], playerList[j]);
-          }
-        }
+        // for (let j = 0; j < playerList.length; j++) {
+        //   if (playerList[i] != playerList[j] && (i || j) == 1 && (i || j) != 0 ) {
+        //     this.physics.add.collider(playerList[i], playerList[j]);
+        //   }
+        //   if (playerList[i] != playerList[j] && (i || j) == 2) {
+        //     this.physics.add.collider(playerList[i], playerList[j]);
+        //   }
+        //   if (playerList[i] != playerList[j] && (i || j) == 3) {
+        //     this.physics.add.collider(playerList[i], playerList[j]);
+        //   }
+        //   if (playerList[i] != playerList[j] && (i || j) == 4) {
+        //     this.physics.add.collider(playerList[i], playerList[j]);
+        //   }
+        // }
       }
 
 
