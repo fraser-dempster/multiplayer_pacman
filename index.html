@@ -5,7 +5,7 @@
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8" />
-    <title>Making your first Phaser 3 Game - Part 1</title>
+    <title>British Bulldogs</title>
     <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script> <!-- getting Phaser 3 -->
     <script src="./smartcontroller.min.js"> </script> <!-- getting smartcontroller -->
     <style type="text/css">
@@ -24,7 +24,7 @@
     // configuring the phaser game
     var config = {
         type: Phaser.AUTO, // can be either Phaser.CANVAS, Phaser.WEBGL, or Phaser.AUTO (AUTO tries using WEBGL and if that doesn't work it uses CANVAS)
-        width: 800, // setting the width of the canvas element
+        width: 1600, // setting the width of the canvas element
         height: 600, // setting the height of the canvas element
         physics: { // the arcade physics system provided by Phaser
           default: 'arcade',
@@ -61,6 +61,7 @@
     function create ()
     {
       this.add.image(400, 300, 'sky');
+      this.add.image(1200, 300, 'sky');
 
       /**
        * A new Static Physics Group is created and assigned to platforms.
@@ -73,6 +74,7 @@
 
       // now use the platforms var to create multiple platforms with physics
       platforms.create(400, 568, 'ground').setScale(2).refreshBody(); // scale is used to make the physics object bigger - basically doubling the image.
+      platforms.create(1200, 568, 'ground').setScale(2).refreshBody(); 
       // Need refresh so the physics systems knows it's been doubled
 
       // platforms.create(600, 400, 'ground');
