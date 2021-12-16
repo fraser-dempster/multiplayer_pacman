@@ -160,12 +160,13 @@
           repeat: -1
       });
 
-      this.initialTime = 150;
+      this.initialTime = 70;
 
       text = this.add.text(32, 32, 'Countdown: ' + formatTime(this.initialTime), { fontSize: '32px', fill: '#000' });
 
       // Each 1000 ms call onEvent
       timedEvent = this.time.addEvent({ delay: 1000, callback: onEvent, callbackScope: this, loop: true });
+      timedEvent = this.time.addEvent({ delay: 70000, callback: goodGuysWin, callbackScope: this, loop: true });
     }
 
     // where the controls live
@@ -213,6 +214,10 @@
     {
       this.initialTime -= 1; // One second
       text.setText('Countdown: ' + formatTime(this.initialTime));
+    }
+
+    function goodGuysWin() {
+      alert("The Good Guys Win :)");
     }
     
     // created a method so movement can be applied to multiple players
