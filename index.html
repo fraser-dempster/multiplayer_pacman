@@ -53,8 +53,9 @@
 
     function preload () // Phaser looks for preload when it starts and will load anything defined in it
     {
-      this.load.image('sky', 'assets/sky.png');
+      // this.load.image('sky', 'assets/sky.png');
       this.load.image('ground', 'assets/platform.png');
+      this.load.image('vertical', 'assets/platform_up.png');
       this.load.image('bomb', 'assets/bomb.png');
       this.load.spritesheet('dude', 
         'assets/dude.png',
@@ -64,11 +65,11 @@
 
     function create ()
     {
+      this.cameras.main.backgroundColor.setTo(0,0,0);
 
 
-
-      this.add.image(400, 300, 'sky');
-      this.add.image(1200, 300, 'sky');
+      // this.add.image(400, 300, 'sky');
+      // this.add.image(1200, 300, 'sky');
 
       /**
        * A new Static Physics Group is created and assigned to platforms.
@@ -76,23 +77,36 @@
        * A dynamic body is one that can move around via forces such as velocity and acceleration.
        * A Static Body simply has a position and size. Gravity won't affect it.
       **/
-
+      vertical_platforms = this.physics.add.staticGroup();
       platforms = this.physics.add.staticGroup(); // adding a group that has physics
 
       // now use the platforms var to create multiple platforms with physics
-      platforms.create(400, 568, 'ground').setScale(2).refreshBody(); // scale is used to make the physics object bigger - basically doubling the image.
-      platforms.create(1200, 568, 'ground').setScale(2).refreshBody(); 
+
       // Need refresh so the physics systems knows it's been doubled
+
+
+
+
+
+      // boundaries
+      platforms.create(400, 600, 'ground').setScale(2).refreshBody(); // scale is used to make the physics object bigger - basically doubling the image.
+      platforms.create(1200, 600, 'ground').setScale(2).refreshBody(); 
+      platforms.create(400, 0, 'ground').setScale(2).refreshBody(); // scale is used to make the physics object bigger - basically doubling the image.
+      platforms.create(1200, 0, 'ground').setScale(2).refreshBody(); 
+      vertical_platforms.create(0, 200, 'vertical').setScale(2).refreshBody();
+      vertical_platforms.create(1600, 200, 'vertical').setScale(2).refreshBody();
+
+      // in-map
 
       platforms.create(400, 400, 'ground');
       platforms.create(1000, 450, 'ground');
       platforms.create(50, 250, 'ground');
       platforms.create(750, 220, 'ground');
 
-      platforms.create(1600, 300, 'ground').setScale(2).refreshBody(); 
-      platforms.create(700, 100, 'ground').setScale(0.5).refreshBody(); 
-      platforms.create(1300, 150, 'ground').setScale(0.5).refreshBody(); 
-      platforms.create(800, 350, 'ground').setScale(0.5).refreshBody(); 
+      // platforms.create(1600, 300, 'ground').setScale(2).refreshBody(); 
+      // platforms.create(700, 100, 'ground').setScale(0.5).refreshBody(); 
+      // platforms.create(1300, 150, 'ground').setScale(0.5).refreshBody(); 
+      // platforms.create(800, 350, 'ground').setScale(0.5).refreshBody(); 
 
       // creating the sprite (player)
       player = this.physics.add.sprite(1500, 510, 'dude'); // loaded as sprite because it has animation frames
@@ -119,6 +133,7 @@
         playerList[i].setCollideWorldBounds(true);
 
         // platform collision for each player
+        this.physics.add.collider(playerList[i], vertical_platforms);
         this.physics.add.collider(playerList[i], platforms);
         this.physics.add.collider(playerList[0], playerList[i], function () {
           // playerList[i].setTint(0xFF0000);
