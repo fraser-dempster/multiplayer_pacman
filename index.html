@@ -27,7 +27,7 @@
     // configuring the phaser game
     var config = {
         type: Phaser.AUTO, // can be either Phaser.CANVAS, Phaser.WEBGL, or Phaser.AUTO (AUTO tries using WEBGL and if that doesn't work it uses CANVAS)
-        width: 1600, // setting the width of the canvas element
+        width: 800, // setting the width of the canvas element
         height: 600, // setting the height of the canvas element
         physics: { // the arcade physics system provided by Phaser
           default: 'arcade',
@@ -90,18 +90,17 @@
 
       // boundaries
       platforms.create(400, 600, 'ground').setScale(2).refreshBody(); // scale is used to make the physics object bigger - basically doubling the image.
-      platforms.create(1200, 600, 'ground').setScale(2).refreshBody(); 
       platforms.create(400, 0, 'ground').setScale(2).refreshBody(); // scale is used to make the physics object bigger - basically doubling the image.
-      platforms.create(1200, 0, 'ground').setScale(2).refreshBody(); 
       vertical_platforms.create(0, 200, 'vertical').setScale(2).refreshBody();
-      vertical_platforms.create(1600, 200, 'vertical').setScale(2).refreshBody();
 
       // in-map
 
       platforms.create(400, 400, 'ground');
-      platforms.create(1000, 450, 'ground');
       platforms.create(50, 250, 'ground');
+
+      // enenmy starting box
       platforms.create(750, 220, 'ground');
+
 
       // platforms.create(1600, 300, 'ground').setScale(2).refreshBody(); 
       // platforms.create(700, 100, 'ground').setScale(0.5).refreshBody(); 
