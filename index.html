@@ -92,14 +92,42 @@
       platforms.create(400, 600, 'ground').setScale(2).refreshBody(); // scale is used to make the physics object bigger - basically doubling the image.
       platforms.create(400, 0, 'ground').setScale(2).refreshBody(); // scale is used to make the physics object bigger - basically doubling the image.
       vertical_platforms.create(0, 200, 'vertical').setScale(2).refreshBody();
+      vertical_platforms.create(800, 200, 'vertical').setScale(2).refreshBody();
 
-      // in-map
+      // bottom left in-map
+      platforms.create(50, 250, 'ground').setScale(0.5).refreshBody();
+      platforms.create(200, 500, 'ground').setScale(0.5).refreshBody();
+      platforms.create(50, 250, 'ground').setScale(0.5).refreshBody();
+      vertical_platforms.create(100, 450, 'vertical').setScale(0.3).refreshBody();
+      platforms.create(270, 330, 'ground').setScale(0.5).refreshBody();
+      vertical_platforms.create(350, 460, 'vertical').setScale(0.3).refreshBody();
+      platforms.create(210, 430, 'ground').setScale(0.2).refreshBody();
+      vertical_platforms.create(170, 410, 'vertical').setScale(0.1).refreshBody();
 
-      platforms.create(400, 400, 'ground');
-      platforms.create(50, 250, 'ground');
+      // bottom right in-map
+      platforms.create(750, 250, 'ground').setScale(0.5).refreshBody();
+      platforms.create(600, 500, 'ground').setScale(0.5).refreshBody();
+      platforms.create(750, 250, 'ground').setScale(0.5).refreshBody();
+      vertical_platforms.create(700, 450, 'vertical').setScale(0.3).refreshBody();
+      platforms.create(530, 330, 'ground').setScale(0.5).refreshBody();
+      vertical_platforms.create(450, 460, 'vertical').setScale(0.3).refreshBody();
+      platforms.create(590, 430, 'ground').setScale(0.2).refreshBody();
+      vertical_platforms.create(630, 410, 'vertical').setScale(0.1).refreshBody();
 
-      // enenmy starting box
-      platforms.create(750, 220, 'ground');
+      // top right map
+      platforms.create(550, 85, 'ground').setScale(0.5).refreshBody();
+      vertical_platforms.create(600, 138, 'vertical').setScale(0.3).refreshBody();
+
+      // top left map
+      platforms.create(250, 85, 'ground').setScale(0.5).refreshBody();
+      vertical_platforms.create(200, 138, 'vertical').setScale(0.3).refreshBody();
+
+      // enemy starting box
+      platforms.create(400, 220, 'ground').setScale(0.5).refreshBody();
+      platforms.create(320, 150, 'ground').setScale(0.2).refreshBody();
+      platforms.create(470, 150, 'ground').setScale(0.2).refreshBody();
+      vertical_platforms.create(500, 188, 'vertical').setScale(0.2).refreshBody();
+      vertical_platforms.create(297, 188, 'vertical').setScale(0.2).refreshBody();
 
 
       // platforms.create(1600, 300, 'ground').setScale(2).refreshBody(); 
@@ -108,11 +136,11 @@
       // platforms.create(800, 350, 'ground').setScale(0.5).refreshBody(); 
 
       // creating the sprite (player)
-      player = this.physics.add.sprite(1500, 510, 'dude'); // loaded as sprite because it has animation frames
-      player2 = this.physics.add.sprite(50, 510, 'dude'); // loaded as sprite because it has animation frames
-      player3 = this.physics.add.sprite(100, 510, 'dude'); // loaded as sprite because it has animation frames
-      player4 = this.physics.add.sprite(150, 510, 'dude'); // loaded as sprite because it has animation frames
-      player5 = this.physics.add.sprite(200, 510, 'dude'); // loaded as sprite because it has animation frames
+      player = this.physics.add.sprite(400, 180, 'dude'); // loaded as sprite because it has animation frames bad
+      player5 = this.physics.add.sprite(360, 180, 'dude'); // loaded as sprite because it has animation frames bad
+      player3 = this.physics.add.sprite(440, 180, 'dude'); // loaded as sprite because it has animation frames bad
+      player4 = this.physics.add.sprite(420, 510, 'dude'); // loaded as sprite because it has animation frames good 
+      player2 = this.physics.add.sprite(43, 510, 'dude'); // loaded as sprite because it has animation frames good
 
       playerList.push(player);
       playerList.push(player2);
@@ -121,10 +149,10 @@
       playerList.push(player5);
 
       player.setTint(0xFF0000);
-      player2.setTint(0x746ab0);
+      player2.setTint(0x00FF00);
       player3.setTint(0x288ba8);
       player4.setTint(0xffce30);
-      player5.setTint(0xE389B9);
+      player5.setTint(0x746ab0);
 
       // setting world bounds for each player
       for (let i = 0; i < playerList.length; i++) {
