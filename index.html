@@ -32,7 +32,7 @@
         physics: { // the arcade physics system provided by Phaser
           default: 'arcade',
           arcade: {
-              gravity: { y: 400 },
+              gravity: {},
               debug: false
           }
         },
@@ -238,29 +238,29 @@
     // created a method so movement can be applied to multiple players
     function movement (playerController, player) {
       if (playerController.buttons['right'] == true) {
-          player.setVelocityX(160);
-          console.log("right equals true");
+        player.setVelocityX(160);
+        player.anims.play('right', true);
+      }
+      else if (playerController.buttons['left'] == true) {
+        player.body.velocity.x = -150;
+        player.anims.play('left', true);
+      }
+      else if (playerController.buttons['up'] == true) {
+        player.body.velocity.y = -150;
+      }
+      else if (playerController.buttons['down'] == true) {
+        player.body.velocity.y = 150;
+      }
+      else
+      {
+        player.setVelocityX(0);
+        player.body.velocity.y = 0;
 
-          player.anims.play('right', true);
-        }
-        else if (playerController.buttons['left'] == true) {
-          player.body.velocity.x = -150;
-          console.log("left equals true");
-
-          player.anims.play('left', true);
-        }
-        else
-          {
-            player.setVelocityX(0);
-
-            player.anims.play('turn');
-          }
+        player.anims.play('turn');
+      }
         
         // this has to be last otherwise phaser messes up
-        if (playerController.buttons['a'] && player.body.touching.down) {
-          player.setVelocityY(-400);
-          console.log("jump equals true");
-        }
+
     }
 </script>
 
