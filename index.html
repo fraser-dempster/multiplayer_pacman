@@ -49,6 +49,8 @@
     var timedEvent;
     var text;
     var counter = 0;
+    var badPlayerList =[];
+    var goodPlayerList =[];
 
 
     function preload () // Phaser looks for preload when it starts and will load anything defined in it
@@ -65,7 +67,7 @@
 
     function create ()
     {
-      this.cameras.main.backgroundColor.setTo(0,0,0);
+      this.cameras.main.backgroundColor.setTo(155,100,155);
 
 
       // this.add.image(400, 300, 'sky');
@@ -141,8 +143,16 @@
       player = this.physics.add.sprite(400, 180, 'dude'); // loaded as sprite because it has animation frames bad
       player5 = this.physics.add.sprite(360, 180, 'dude'); // loaded as sprite because it has animation frames bad
       player3 = this.physics.add.sprite(440, 180, 'dude'); // loaded as sprite because it has animation frames
+
+      badPlayerList.push(player);
+      badPlayerList.push(player5);
+      badPlayerList.push(player3);
+
       player4 = this.physics.add.sprite(650, 450, 'dude'); // loaded as sprite because it has animation frames
       player2 = this.physics.add.sprite(150, 450, 'dude'); // loaded as sprite because it has animation frames
+
+      goodPlayerList.push(player4);
+      goodPlayerList.push(player2);
 
       playerList.push(player);
       playerList.push(player2);
